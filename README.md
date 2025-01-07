@@ -19,13 +19,16 @@ Este proyecto es una aplicación básica CRUD (Crear, Leer, Actualizar, Eliminar
 
 ## Estructura de archivos
 
-<code>/project-root
-|-- /public          # Archivos accesibles públicamente (index.php, script.js, etc.)
+<code>
+/project-root
+|-- index.php        # Punto de entrada principal
+|-- .htaccess        # Reglas de configuración para el servidor web
 |-- /app             # Lógica principal de la aplicación (DAO_Access.php, Employee.php, etc.)
 |-- /config          # Archivos de configuración (config.php)
 |-- /sql             # Scripts de base de datos (employee.sql)
 |-- /templates       # Plantillas HTML
-|-- README.md        # Documentación</code>
+|-- README.md        # Documentación
+</code>
 
 ## Mejoras futuras
 
