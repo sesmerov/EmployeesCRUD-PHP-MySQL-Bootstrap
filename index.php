@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 break;
             case 'Next':
                 $first += NUMBER_OF_EMPLOYEES;
+                if($first > NUMBER_OF_EMPLOYEES) $first = $last;
                 break;
             case 'End':
                 $first = $last;
