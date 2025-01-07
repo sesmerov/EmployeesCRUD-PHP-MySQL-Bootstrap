@@ -56,6 +56,9 @@
                 <div>
                     <p>Numero total de empleados: <span class="fw-bolder"><?= $totalNumEmployees ?></span></p>
                 </div>
+                <div>
+                <p>Página <span class="fw-bolder"><?= $pageNumber ?></span> de <span class="fw-bolder"><?= $totalPages ?></p>
+                </div>
                 <form method="get">
                     <button class="btn btn-secondary" name="order" value="Start">Inicio</button>
                     <button class="btn btn-secondary" name="order" value="Last">Anterior</button>
