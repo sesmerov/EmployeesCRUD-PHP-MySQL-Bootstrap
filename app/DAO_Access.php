@@ -31,7 +31,7 @@ class DAO_Access{
             echo "Error de conexión " . $e->getMessage();
             exit();
         }
-        $this->stmtAllEmployees = $this->dbh->prepare("SELECT * FROM Employee");
+        $this->stmtAllEmployees = $this->dbh->prepare("SELECT * FROM Employee LIMIT :first ,:numOfEmployees"); //Include pagination
         $this->stmtgetEmployee = $this->dbh->prepare("SELECT * FROM Employee where id = ?");
         $this->stmtTotalNumEmployees = $this->dbh->prepare("SELECT count(*) FROM Employee");
         $this->stmtdeleteEmployee = $this->dbh->prepare("DELETE FROM Employee WHERE id=:id");
@@ -44,9 +44,11 @@ class DAO_Access{
     }
 
 
-    public function getAllEmployees() :array{
+    public function getAllEmployees($first, $numOfEmployees) :array{
         $employeesList = [];
         $this->stmtAllEmployees->setFetchMode(PDO::FETCH_CLASS, 'Employee');
+        $this->stmtAllEmployees->bindValue(":first",$first);
+        $this->stmtAllEmployees->bindValue(":numOfEmployees",$numOfEmployees);
         if ($this->stmtAllEmployees->execute()) {
             while ($employee = $this->stmtAllEmployees->fetch()) {
                 $employeesList[] = $employee;
