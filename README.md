@@ -32,7 +32,6 @@ Este proyecto es una aplicación básica CRUD (Crear, Leer, Actualizar, Eliminar
 
 ## Mejoras futuras
 
-- [ ] Añadir opciones de paginación.
 - [ ] Añadir opcion de "Detalles" donde se muestre mas información de cada empleado
 - [ ] Añadir la posibilidad de adjuntar una fotografía para cada empleado, almacenando la imagen en el servidor y mostrando una miniatura junto con los datos del empleado.
 
