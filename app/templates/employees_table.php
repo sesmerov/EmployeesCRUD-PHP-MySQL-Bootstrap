@@ -15,7 +15,15 @@
     </header>
     <main>
         <div class="container">
-            <a href="index.php?order=Add" class="btn btn-success m-3">AÑADIR NUEVO EMPLEADO</a>
+            <div class="d-flex justify-content-between">
+                <a href="index.php?order=Add" class="btn btn-success my-3">AÑADIR NUEVO EMPLEADO</a>
+                <form class="m-3">
+                    Empleados a mostrar por página:
+                    <button class="btn btn-secondary" name="order" value=10>10</button>
+                    <button class="btn btn-secondary" name="order" value=20>20</button>
+                    <button class="btn btn-secondary" name="order" value=50>50</button>
+                </form>
+            </div>
             <table class="table table-striped ">
                 <thead>
                     <tr class="text-center">

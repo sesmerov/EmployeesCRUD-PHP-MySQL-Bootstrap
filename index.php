@@ -7,17 +7,22 @@ require_once "app/actions.php";
 $dbh = DAO_Access::getModel();
 $totalNumEmployees = $dbh->getTotalNumEmployees();
 
-const NUMBER_OF_EMPLOYEES = 10;
+$employeesInList = 10;
 
 if (!isset($_SESSION["first"])) {
-    $first = 0;
+    $_SESSION["first"] = 0;
 }
 $first = $_SESSION["first"];
 
-if($totalNumEmployees % NUMBER_OF_EMPLOYEES == 0){
-    $last = $totalNumEmployees -NUMBER_OF_EMPLOYEES;
-}else{
-    $last = $totalNumEmployees - ($totalNumEmployees%NUMBER_OF_EMPLOYEES);
+if (!isset($_SESSION["employeesInList"])) {
+    $_SESSION["employeesInList"] = 10;
+}
+$employeesInList = $_SESSION["employeesInList"];
+
+if ($totalNumEmployees % $employeesInList == 0) {
+    $last = $totalNumEmployees - $employeesInList;
+} else {
+    $last = $totalNumEmployees - ($totalNumEmployees % $employeesInList);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -36,18 +41,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 $first = 0;
                 break;
             case 'Last':
-                $first-=NUMBER_OF_EMPLOYEES;
-                if($first < 0) $first = 0;
+                $first -= $employeesInList;
+                if ($first < 0) $first = 0;
                 break;
             case 'Next':
-                $first += NUMBER_OF_EMPLOYEES;
-                if($first > NUMBER_OF_EMPLOYEES) $first = $last;
+                $first += $employeesInList;
+                if ($first > $employeesInList) $first = $last;
                 break;
             case 'End':
                 $first = $last;
                 break;
+            case '10':
+            case '20':
+            case '50':
+                $employeesInList = (int)$_GET["order"];
+                $first = 0; // Reset to the first page when the number of employees per page changes
+                break;
         }
         $_SESSION["first"] = $first;
+
+        if ($employeesInList > $totalNumEmployees) {
+            $employeesInList = $totalNumEmployees;
+        }
+        $_SESSION["employeesInList"] = $employeesInList;
     }
 } else {
     if (isset($_POST["order"])) {
@@ -62,5 +78,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 
-$employeesList = $dbh->getAllEmployees($first, NUMBER_OF_EMPLOYEES);
+$employeesList = $dbh->getAllEmployees($first, $employeesInList);
 include_once "app/templates/employees_table.php";
