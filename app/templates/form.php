@@ -13,57 +13,58 @@
     <header class="bg-primary">
         <?= $order == "Modify" ? '<h1 class="text-center py-3">MODIFICAR EMPLEADO </h1>' : "" ?>
         <?= $order == "Add" ? '<h1 class="text-center py-3">AÑADIR EMPLEADO </h1>' : "" ?>
+        <?= $order == "Details" ? '<h1 class="text-center py-3">DETALLES DE EMPLEADO </h1>' : "" ?>
 
     </header>
     <main>
         <div class="container d-flex justify-content-center align-items-center mt-5">
-            <form method="POST" class="p-4 border rounded shadow w-75">
+            <form method="POST" class="p-4 border rounded shadow d-flex flex-column">
                 <div class="mb-3 row <?= $order == "Add" ? 'visually-hidden' : ''?> ">
-                    <label for="id" class="col-sm-3 col-form-label fw-bold">ID</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control-plaintext " name="id" id="id" value="<?= $order == "Modify" ? "$employee->id": "" ?>" readonly>
+                    <label for="id" class="col-sm-4 col-form-label fw-bold">ID:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control-plaintext " name="id" id="id" value="<?= $order == "Modify" || $order == "Details" ? "$employee->id": "" ?>" readonly>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="first_name" class="col-sm-3 col-form-label fw-bold">Nombre</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="first_name" id="first_name" value="<?= $order == "Modify" ? "$employee->first_name": "" ?>">
+                    <label for="first_name" class="col-sm-4 col-form-label fw-bold">Nombre:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class=<?= $order == "Details"? "form-control-plaintext":"form-control"?> name="first_name" id="first_name" value="<?= $order == "Modify" || $order == "Details"  ? "$employee->first_name": "" ?>" <?= $order=="Details" ? "readonly": ""?>>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="last_name" class="col-sm-3 col-form-label fw-bold">Apellido</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="last_name" id="last_name" value="<?= $order == "Modify" ? "$employee->last_name": "" ?>">
+                    <label for="last_name" class="col-sm-4 col-form-label fw-bold">Apellido:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class=<?= $order == "Details"? "form-control-plaintext":"form-control"?> name="last_name" id="last_name" value="<?= $order == "Modify" || $order == "Details"  ? "$employee->last_name": "" ?>"<?= $order=="Details" ? "readonly": ""?>>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="phone" class="col-sm-3 col-form-label fw-bold">Teléfono</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="phone" id="phone" value="<?= $order == "Modify" ? "$employee->phone": "" ?>">
+                    <label for="phone" class="col-sm-4 col-form-label fw-bold">Teléfono:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class=<?= $order == "Details"? "form-control-plaintext":"form-control"?> name="phone" id="phone" value="<?= $order == "Modify" || $order == "Details"  ? "$employee->phone": "" ?>"<?= $order=="Details" ? "readonly": ""?>>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="email" class="col-sm-3 col-form-label fw-bold">Correo Electrónico</label>
-                    <div class="col-sm-9">
-                        <input type="email" class="form-control" name="email" id="email" value="<?= $order == "Modify" ? "$employee->email": "" ?>">
+                    <label for="email" class="col-sm-4 col-form-label fw-bold">Correo Electrónico:</label>
+                    <div class="col-sm-8">
+                        <input type="email" class=<?= $order == "Details"? "form-control-plaintext":"form-control"?> name="email" id="email" value="<?= $order == "Modify" || $order == "Details"  ? "$employee->email": "" ?>"<?= $order=="Details" ? "readonly": ""?>>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="department" class="col-sm-3 col-form-label fw-bold">Departamento</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="department" id="department" value="<?= $order == "Modify" ? "$employee->department": "" ?>">
+                    <label for="department" class="col-sm-4 col-form-label fw-bold">Departamento:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class=<?= $order == "Details"? "form-control-plaintext":"form-control"?> name="department" id="department" value="<?= $order == "Modify" || $order == "Details"  ? "$employee->department": "" ?>"<?= $order=="Details" ? "readonly": ""?>>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="job_title" class="col-sm-3 col-form-label fw-bold">Puesto</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="job_title" id="job_title" value="<?= $order == "Modify" ? "$employee->job_title": "" ?>">
+                    <label for="job_title" class="col-sm-4 col-form-label fw-bold">Puesto:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class=<?= $order == "Details"? "form-control-plaintext":"form-control"?> name="job_title" id="job_title" value="<?= $order == "Modify" || $order == "Details"  ? "$employee->job_title": "" ?>"<?= $order=="Details" ? "readonly": ""?>>
                     </div>
                 </div>
 

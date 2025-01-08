@@ -33,7 +33,6 @@
                         <th class="bg-secondary text-white">TELÉFONO</th>
                         <th class="bg-secondary text-white">EMAIL</th>
                         <th class="bg-secondary text-white">DEPARTAMENTO</th>
-                        <th class="bg-secondary text-white">PUESTO</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,9 +44,10 @@
                             <td><?= $employee->phone ?></td>
                             <td><?= $employee->email ?></td>
                             <td><?= $employee->department ?></td>
-                            <td><?= $employee->job_title ?></td>
-                            <td><a href="index.php?order=Modify&id=<?= $employee->id ?>" class="btn btn-warning">EDITAR</a></td>
-                            <td><a href="#" onclick="confirmDelete('<?= $employee->id ?>','<?= $employee->first_name ?>','<?= $employee->last_name ?>')" class="btn btn-danger">BORRAR</a></td>
+                            <td><a href="index.php?order=Details&id=<?= $employee->id ?>" class="btn btn-primary">DETALLES</a>
+                                <a href="index.php?order=Modify&id=<?= $employee->id ?>" class="btn btn-warning">EDITAR</a>
+                                <a href="#" onclick="confirmDelete('<?= $employee->id ?>','<?= $employee->first_name ?>','<?= $employee->last_name ?>')" class="btn btn-danger">BORRAR</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -57,9 +57,9 @@
                     <p>Numero total de empleados: <span class="fw-bolder"><?= $totalNumEmployees ?></span></p>
                 </div>
                 <div>
-                <p>Página <span class="fw-bolder"><?= $pageNumber ?></span> de <span class="fw-bolder"><?= $totalPages ?></p>
+                    <p>Página <span class="fw-bolder"><?= $pageNumber ?></span> de <span class="fw-bolder"><?= $totalPages ?></p>
                 </div>
-                <form method="get">
+                <form method="get" class="mx-3">
                     <button class="btn btn-secondary" name="order" value="Start">Inicio</button>
                     <button class="btn btn-secondary" name="order" value="Last">Anterior</button>
                     <button class="btn btn-secondary" name="order" value="Next">Siguiente</button>

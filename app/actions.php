@@ -3,6 +3,13 @@
 include_once("DAO_Access.php");
 require_once("Employee.php");
 
+function actionGetDetails($id){
+    $db = DAO_Access::getModel();
+    $employee = $db->getEmployee($id);
+    $order = "Details";
+    include_once("templates/form.php");
+}
+
 function actionModifyEmployee($id){
     $db = DAO_Access::getModel();
     $employee = $db->getEmployee($id);

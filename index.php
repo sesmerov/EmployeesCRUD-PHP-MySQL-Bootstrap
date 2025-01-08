@@ -35,6 +35,9 @@ if ($totalNumEmployees % $employeesInList == 0) {
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['order'])) {
         switch ($_GET["order"]) {
+            case 'Details':
+                actionGetDetails($_GET["id"]);
+                die();
             case 'Modify':
                 actionModifyEmployee($_GET["id"]);
                 die();
